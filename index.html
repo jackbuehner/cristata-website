@@ -5,6 +5,11 @@
     <title>Cristata App &amp; Server</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jack Buehner">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@0;1&family=Rubik:wght@600&display=swap"
+        rel="stylesheet">
 </head>
 
 <style>
@@ -13,17 +18,17 @@
         flex-direction: column;
         align-items: center;
         margin: 20px;
+        font-family: 'Atkinson Hyperlegible', sans-serif;
+    }
+
+    h1,
+    h2 {
+        font-family: 'Rubik', sans-serif;
     }
 
     body {
         margin: 0;
         max-width: 800px
-    }
-
-    h1,
-    p,
-    li {
-        font-family: sans-serif
     }
 
     ul {
@@ -38,8 +43,15 @@
         margin: 4px 0;
     }
 
+    .paypal-columns {
+        margin: 20px 0 0 0;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
     .paypal-button-container {
-        margin: 20px 0 0 0
+        width: 100%;
     }
 
     .note {
@@ -82,30 +94,68 @@
     <p>For more information, email <a href="mailto:contact@cristata.app">contact@cristata.app</a>.
     </p>
 
-    <div class="paypal-button-container" id="paypal-button-container-P-2F552374F38110646MEOGW4I"></div>
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=AfEPK-6honxzXowX-1SO9i6D1yUCJfotHTphonPsbxLRxXFKzVbyoRfKf8inkSvjpp5SPEXap9v0KU5h&vault=true&intent=subscription"
-        data-sdk-integration-source="button-factory"></script>
-    <script>
-        paypal.Buttons({
-            style: {
-                shape: 'rect',
-                color: 'white',
-                layout: 'horizontal',
-                label: 'subscribe'
-            },
-            createSubscription: function (data, actions) {
-                return actions.subscription.create({
-                    /* Creates the subscription */
-                    plan_id: 'P-2F552374F38110646MEOGW4I'
-                });
-            },
-            onApprove: function (data, actions) {
-                alert(data.subscriptionID); // You can add optional success message for the subscriber here
-            }
-        }).render('#paypal-button-container-P-2F552374F38110646MEOGW4I'); // Renders the PayPal button
+    <div class="paypal-columns">
+        <script
+            src="https://www.paypal.com/sdk/js?client-id=AfEPK-6honxzXowX-1SO9i6D1yUCJfotHTphonPsbxLRxXFKzVbyoRfKf8inkSvjpp5SPEXap9v0KU5h&vault=true&intent=subscription"
+            data-sdk-integration-source="button-factory"></script>
 
-    </script>
+        <div class="paypal-button-container" id="paypal-button-container-P-2F552374F38110646MEOGW4I">
+            <h2>
+                Pay monthly
+            </h2>
+        </div>
+
+        <script>
+            paypal.Buttons({
+                style: {
+                    shape: 'rect',
+                    color: 'white',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function (data, actions) {
+                    return actions.subscription.create({
+                        /* Creates the subscription */
+                        plan_id: 'P-2F552374F38110646MEOGW4I'
+                    });
+                },
+                onApprove: function (data, actions) {
+                    alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                }
+            }).render('#paypal-button-container-P-2F552374F38110646MEOGW4I'); // Renders the PayPal button
+
+        </script>
+
+
+        <div class="paypal-button-container" id="paypal-button-container-P-5RC14002DB260045GMEOH7JY">
+            <h2>
+                Pay yearly
+            </h2>
+        </div>
+        <script>
+            paypal.Buttons({
+                style: {
+                    shape: 'rect',
+                    color: 'white',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function (data, actions) {
+                    return actions.subscription.create({
+                        /* Creates the subscription */
+                        plan_id: 'P-5RC14002DB260045GMEOH7JY'
+                    });
+                },
+                onApprove: function (data, actions) {
+                    alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                }
+            }).render('#paypal-button-container-P-5RC14002DB260045GMEOH7JY'); // Renders the PayPal button
+
+        </script>
+
+    </div>
+
+
 
     <p class="note">
         Cristata is primarily developed by Jack Buehner.

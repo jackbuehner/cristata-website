@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cristata App &amp; Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jack Buehner">
+</head>
+
+<style>
+    html {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+    }
+
+    body {
+        margin: 0;
+        max-width: 800px
+    }
+
+    h1,
+    p,
+    li {
+        font-family: sans-serif
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    p {
+        margin: 4px 0;
+    }
+
+    li {
+        margin: 4px 0;
+    }
+
+    .paypal-button-container {
+        margin: 20px 0 0 0
+    }
+
+    .note {
+        font-size: 12px;
+        opacity: 0.7;
+    }
+</style>
+
+<body>
+    <h1>
+        Cristata App &amp; Server
+    </h1>
+
+    <p>This subscription comes with the following benefits:
+    </p>
+    <ul>
+        <li>Hosting of the Cristata Web App.
+            <ul>
+                <li>Profile management with user-editable fields</li>
+                <li>Content Management System (CMS) with unlimited entries and adjustable visibility/editing permissions
+                </li>
+                <li>Photo library interface with support for tags and photo attribution</li>
+                <li>Reusable components for further customization and expansion of Cristata</li>
+            </ul>
+        </li>
+        <li>Hosting of the server that powers the Cristata Web App.</li>
+        <li>Realtime collaboration between multiple writers in the text editor.</li>
+        <li>Configuration of custom API collections per your specification.</li>
+        <li>Special API endpoints for information to be exposed to your public-facing website.</li>
+    </ul>
+    <br />
+    <p><i>The Cristata server requires your credientials for a MongoDB database and an Amazon S3 storage bucket.</i>
+    </p>
+    <br />
+    <p>
+        At this point in time, Cristata is only available to organiations. Do not attempt to pay for Cristata without
+        prior approval.
+    </p>
+    <br />
+    <p>For more information, email <a href="mailto:contact@cristata.app">contact@cristata.app</a>.
+    </p>
+
+    <div class="paypal-button-container" id="paypal-button-container-P-2F552374F38110646MEOGW4I"></div>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AfEPK-6honxzXowX-1SO9i6D1yUCJfotHTphonPsbxLRxXFKzVbyoRfKf8inkSvjpp5SPEXap9v0KU5h&vault=true&intent=subscription"
+        data-sdk-integration-source="button-factory"></script>
+    <script>
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'white',
+                layout: 'horizontal',
+                label: 'subscribe'
+            },
+            createSubscription: function (data, actions) {
+                return actions.subscription.create({
+                    /* Creates the subscription */
+                    plan_id: 'P-2F552374F38110646MEOGW4I'
+                });
+            },
+            onApprove: function (data, actions) {
+                alert(data.subscriptionID); // You can add optional success message for the subscriber here
+            }
+        }).render('#paypal-button-container-P-2F552374F38110646MEOGW4I'); // Renders the PayPal button
+
+    </script>
+
+    <p class="note">
+        Cristata is primarily developed by Jack Buehner.
+    </p>
+</body>
+
+</html>
